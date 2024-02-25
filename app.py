@@ -4,6 +4,57 @@ from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 
+url = "https://rickandmortyapi.com/api/"
+
+@app.route('/')
+@app.route('/<page>')
+def get_list_characters_page(page='Anonymous'):
+
+    pageUrl = "character"
+
+    if page:
+        pageUrl = "character/?page=" + page
+
+    response = urllib.request.urlopen(url + pageUrl)
+    characters = response.read()
+    dict = json.loads(characters)
+
+    info=dict["info"]
+
+    nextPage=info['next'][-1:] 
+
+    prevPage=0
+
+    if info['prev'] != None:
+        prevPage=info['prev'][-1:]
+
+    return render_template("characters.html", characters=dict["results"], nextPage=nextPage, prevPage=prevPage)
+
+@app.route('/profile/<id>')
+def get_profile(id):
+    response = urllib.request.urlopen(url + "character/" + id)
+    characters = response.read()
+    dict = json.loads(characters)
+
+    return render_template("profile.html", profile=dict)
+
+@app.route('/episodes')
+def get_episodes():
+    url = "https://rickandmortyapi.com/api/episode/"
+    response = urllib.request.urlopen(url)
+    ler_episodios = response.read()
+    dict = json.loads(ler_episodios)
+    
+    return render_template("episodes.html",episodes=dict["results"])
+
+@app.route("/locations")
+def get_list_locations():
+    url = "https://rickandmortyapi.com/api/location"
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    locations_dict = json.loads(data)
+
+    return render_template("locations.html", locations=locations_dict['results'])
 
 @app.route("/location/<id>")
 def get_location(id):
@@ -21,7 +72,6 @@ def get_location(id):
     
     residents = {}
    
-
     # Acessar os dados de cada um dos residentes da localização fornecida e extrair o nome do personagem
     for url_character in dict["residents"]:
         url2 = url_character
@@ -29,7 +79,6 @@ def get_location(id):
         data_character = response2.read()
         dict_character = json.loads(data_character)
         residents[dict_character["id"]] = dict_character["name"]
-
 
     return render_template("location.html", location=dict, characters=residents)
 
