@@ -54,3 +54,12 @@ def  get_location(id):
     residents = [resident for resident in dict.get('residents')]
     characters = [json.loads(urllib.request.urlopen(resident).read().decode('utf-8')) for resident in residents]
     return render_template("location.html", location=dict, characters=characters)
+
+@app.route("/locations")
+def get_list_locations():
+    url = "https://rickandmortyapi.com/api/location"
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    locations_dict = json.loads(data)
+
+    return render_template("locations.html", locations=locations_dict['results'])
