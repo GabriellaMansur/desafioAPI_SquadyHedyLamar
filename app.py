@@ -36,3 +36,12 @@ def get_profile(id):
     dict = json.loads(characters)
 
     return render_template("profile.html", profile=dict)
+
+@app.route('/episodes')
+def get_episodes():
+    url = "https://rickandmortyapi.com/api/episode/"
+    response = urllib.request.urlopen(url)
+    ler_episodios = response.read()
+    dict = json.loads(ler_episodios)
+    
+    return render_template("episodes.html",episodes=dict["results"])
