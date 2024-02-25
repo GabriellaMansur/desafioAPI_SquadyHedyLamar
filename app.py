@@ -45,3 +45,12 @@ def get_episodes():
     dict = json.loads(ler_episodios)
     
     return render_template("episodes.html",episodes=dict["results"])
+
+@app.route('/location/<id>')
+def  get_location(id):
+    response = urllib.request.urlopen(url + "location/" + id)
+    location = response.read()
+    dict = json.loads(location)
+    residents = [resident for resident in dict.get('residents')]
+    characters = [json.loads(urllib.request.urlopen(resident).read().decode('utf-8')) for resident in residents]
+    return render_template("location.html", location=dict, characters=characters)

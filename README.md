@@ -24,6 +24,41 @@ A documentação da API pode ser encontrada em: [https://rickandmortyapi.com/doc
 - Mariana Santana Amaral
 
 
+### Instalação
+
+ - Crie um ambiente virtual:
+```
+ python3 -m venv .venv
+ # phyton3  = comando de execução do python
+ # -m       = roda o modo da biblioteca como sript
+ # venv     = cria um ou mais ambientes virtuais de python
+ # .venv    = nome da pasta que conterá o ambiente virtua
+ #              ('.' faz a pasta ser ocultada)
+```
+ - Ative seu ambiente virtual:
+```
+ source .venv/bin/activate
+ # source               = executa os comando de um arquivo
+ # .venv/bin/activate   = script que ativa o ambiente virtual
+```
+ - Intalar os pacotes necessários dentro de seu ambiente virtual
+```
+ pip install -r requirements.txt
+ # pip              = gerenciador de pacotes do python
+ # install          = comando para instalar pacotes
+ # -r               = sinaliza a instalação dos requerimentos contindos no arquivos
+ # requirements.txt  = nome do arquivo que contém a lista dos pacotes necessários
+```
+ - Rodando sua aplicação
+```
+ flask run
+ # flask = utilitário para aplicações flask
+ # run   = roda um servidor de desenvolvimento
+```
+
+### Boas Práticas
+ - criação de .gitignore para não versionar pacotes desnecessários como arquivos de configuração de ambientes viruais ```(.venv)```  e cache de aplicação ```(__pycache__)```
+
 <p align="center">
 <img src= "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="7%" height="1%"/>
 <img src= "https://cdn.freebiesupply.com/logos/large/2x/flask-logo-png-transparent.png" width="5%" height="1.5%"/>
