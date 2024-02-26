@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row align-items-center text-light">
+    {% for episode in episodes %}
+    <div class="col-sm-4 col-6">
+        <div class="text-center m-3 border bg-dark" style="
+                background: linear-gradient(
+                  45deg,
+                  hsla(168, 85%, 52%, 0.5),
+                  hsla(263, 88%, 45%, 0.5) 100%
+                );
+              ">
+            <p class="p-2 h5">{{episode.name}}</p>
+            <p class="p-2">{{episode.episode}}</p>
+            <p class="p-2">{{episode.air_date}}</p>
+            <p class="p-2">
+                <a href="#" class="btn btn-primary">Info episódio</a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
