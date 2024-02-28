@@ -21,12 +21,15 @@ def get_list_characters_page(page='Anonymous'):
 
     info=dict["info"]
 
-    nextPage=info['next'][-1:] 
+    nextPage=1
+    
+    if info['next'] != None:
+        nextPage=info['next'].partition('?page=')[2]
 
-    prevPage=0
+    prevPage=1
 
     if info['prev'] != None:
-        prevPage=info['prev'][-1:]
+        prevPage=info['prev'].partition('?page=')[2]
 
     return render_template("characters.html", characters=dict["results"], nextPage=nextPage, prevPage=prevPage)
 
@@ -50,13 +53,30 @@ def get_profile(id):
     return render_template("profile.html", profile=dict, episodes=episodes)
 
 @app.route('/episodes')
-def get_episodes():
-    url = "https://rickandmortyapi.com/api/episode/"
-    response = urllib.request.urlopen(url)
+@app.route('/episodes/<page>')
+def get_episodes(page='Anonymous'):
+    pageUrl = "episode"
+
+    if page:
+        pageUrl = "episode/?page=" + page
+
+    response = urllib.request.urlopen(url + pageUrl)
     ler_episodios = response.read()
     dict = json.loads(ler_episodios)
+
+    info=dict["info"]
+
+    nextPage=1
     
-    return render_template("episodes.html",episodes=dict["results"])
+    if info['next'] != None:
+        nextPage=info['next'].partition('?page=')[2]
+
+    prevPage=1
+
+    if info['prev'] != None:
+        prevPage=info['prev'].partition('?page=')[2]
+    
+    return render_template("episodes.html",episodes=dict["results"], nextPage=nextPage, prevPage=prevPage)
 
 @app.route('/episode/<id>')
 def get_episode(id):
