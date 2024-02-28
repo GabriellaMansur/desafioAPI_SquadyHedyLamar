@@ -19,12 +19,12 @@
             </a>
           </p>
         <h3>Episódios</h3>
-        {% for episode in profile.episode%}
+        {% for episode_id, episode_name in episodes.items()%}
     
           <div class="col-sm-3 col-6">
             <p>
-              <a href="/" class="btn btn-primary" style=" background-color: #88e23b; color: #043c6e;">
-                {{episode}}
+              <a href="/episode/{{episode_id}}" class="btn btn-primary" style=" background-color: #88e23b; color: #043c6e;">
+                {{episode_name}}
               </a>
             </p>
         </div>
