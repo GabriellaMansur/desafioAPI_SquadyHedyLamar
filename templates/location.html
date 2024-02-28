@@ -20,8 +20,8 @@
                     <td>{{ location.dimension }}</td>
                     <td>
                         <ul>
-                            {% for character in characters %}
-                            <li><a href="/profile/{{ character }}">{{ characters[character] }}</a></li>
+                            {% for character_id, character_name in characters.items() %}
+                            <li><a href="/profile/{{ character_id }}">{{ character_name }}</a></li>
                             {% endfor %}
                         </ul>
                     </td>
