@@ -14,7 +14,6 @@ A documentação da API pode ser encontrada em: [https://rickandmortyapi.com/doc
 ## Participantes:
 - Amanda Dias Alves Ferreira
 - Gabriella Moreira Mansur Mesquita
-- Hevilin Cerqueira
 - Fernanda Suominsky
 - Lais Rodrigues Zahran
 - Raquel Soares Pedroso
