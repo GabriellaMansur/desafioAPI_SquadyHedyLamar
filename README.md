@@ -6,10 +6,11 @@
 
 <p align="center"><b> Bootcamp Python e Django - WoMakersCode </b> <p>
 
-<h3 align="center"><b>Desafio Rick and Morty - consumo de API com Flask</b> </h3>
+<h3 align="center"><b>Desafio Rick and Morty – Consumo de API com Flask</b> </h3>
 <h3 align="center"><b>Squad Hedy Lamar</b> </h3>
 Este projeto consiste em um exercício de consumo de API com Flask, usando a API do Rick and Morty. 
-A documentação da API pode ser encontrada em: [https://rickandmortyapi.com/documentation]
+
+A documentação da API pode ser encontrada [aqui](https://rickandmortyapi.com/documentation).
 
 ## Participantes:
 - Amanda Dias Alves Ferreira
