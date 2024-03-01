@@ -39,18 +39,8 @@ def get_profile(id):
     characters = response.read()
     dict = json.loads(characters)
 
-    episodes = {}
-   
-    # Acessar os dados de cada um dos residentes da localização fornecida e extrair o nome do personagem
-    for url_episode in dict["episode"]:
-        url2 = url_episode
-        response2 = urllib.request.urlopen(url2)
-        data_episode = response2.read()
-        dict_episode = json.loads(data_episode)
-        episodes[dict_episode["id"]] = dict_episode["name"]
 
-
-    return render_template("profile.html", profile=dict, episodes=episodes)
+    return render_template("profile.html", profile=dict)
 
 @app.route('/episodes')
 @app.route('/episodes/<page>')
